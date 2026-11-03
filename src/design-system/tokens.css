@@ -1,0 +1,141 @@
+/*
+ * Tokens del sistema de diseño.
+ * Todo color, tamaño, radio, sombra y curva de movimiento sale de aquí,
+ * para que los componentes se puedan llevar 1:1 a variables de Figma.
+ */
+:root {
+  /* Tipografía */
+  --font-sans: 'Montserrat Variable', 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-xs: 0.6875rem; /* 11 */
+  --text-sm: 0.8125rem; /* 13 */
+  --text-md: 0.9375rem; /* 15 */
+  --text-lg: 1.125rem; /* 18 */
+  --text-xl: 1.5rem; /* 24 */
+  --text-2xl: 2rem; /* 32 */
+  --text-display: clamp(2.5rem, 4.2vw, 3.75rem);
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --tracking-label: 0.12em;
+  --tracking-tight: -0.02em;
+
+  /* Espaciado: retícula de 8 px (4 px solo como medio paso para ajustes finos) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radios (múltiplos de 8) */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 520ms;
+
+  /* Layout */
+  --sidebar-w: 240px;
+  --sidebar-w-collapsed: 88px;
+  --sidebar-inset: 16px;
+  /* Tamaños de control */
+  --control-sm: 32px;
+  --control-md: 40px;
+  --control-lg: 48px;
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --content-max: 1440px;
+
+  /* Acento: turquesa del rayo de Bia (#08ddbc) llevado un 10% hacia neón */
+  --accent: #0df0cb;
+  --accent-strong: #5cffe3;
+  --accent-contrast: #03201b;
+}
+
+/* ---------- Tema oscuro (por defecto) ---------- */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #07080b;
+  --bg-glow-1: rgba(13, 240, 203, 0.13);
+  --bg-glow-2: rgba(13, 240, 203, 0.05);
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-raised: #13151b;
+  --surface-sunken: rgba(255, 255, 255, 0.05);
+  --hairline: rgba(255, 255, 255, 0.07);
+  --text: #f2f3f5;
+  /* Contrastes AA: muted 7,9:1 · subtle ≥4,5:1 sobre tarjetas y campos */
+  --text-muted: #a3a8b1;
+  --text-subtle: #868b95;
+  --accent-soft: rgba(13, 240, 203, 0.12);
+  --accent-text: #3ff7d8;
+  --accent-graphic: var(--accent);
+  --accent-glow-soft: rgba(13, 240, 203, 0.14);
+  --data-alt: #8fe3ff;
+  /* Datos y contornos de campos: ≥3:1 (WCAG 1.4.11). Pistas decorativas: tenues */
+  --data-muted: #666a73;
+  --data-track: rgba(255, 255, 255, 0.1);
+  --border-field: #666a73;
+  --border-field-hover: #868b95;
+  --success: #a3e06b;
+  --success-soft: rgba(163, 224, 107, 0.14);
+  --warning: #e8b04b;
+  --warning-soft: rgba(232, 176, 75, 0.14);
+  --danger: #ff6369;
+  --scrim: rgba(3, 4, 6, 0.6);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --glass-bg: rgba(255, 255, 255, 0.055);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent-strong);
+  --focus-color: var(--accent-strong);
+}
+
+/* ---------- Tema claro ---------- */
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f3f4f6;
+  --bg-glow-1: rgba(8, 221, 188, 0.16);
+  --bg-glow-2: rgba(8, 221, 188, 0.07);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-hover: rgba(255, 255, 255, 0.95);
+  --surface-raised: #ffffff;
+  --surface-sunken: rgba(23, 26, 32, 0.05);
+  --hairline: rgba(23, 26, 32, 0.08);
+  --text: #171a20;
+  --text-muted: #505257;
+  --text-subtle: #6b6d72;
+  --accent-soft: rgba(8, 221, 188, 0.16);
+  --accent-text: #04695a;
+  /* El neón sobre blanco no llega a 3:1: en claro los gráficos usan un turquesa profundo */
+  --accent-graphic: #08907a;
+  --accent-glow-soft: rgba(8, 221, 188, 0.14);
+  --data-alt: #2b8fb3;
+  --data-muted: #85878c;
+  --data-track: rgba(23, 26, 32, 0.08);
+  --border-field: #85878c;
+  --border-field-hover: #6b6d72;
+  --success: #2a6b0a;
+  --success-soft: rgba(42, 107, 10, 0.1);
+  --warning: #7a5100;
+  --warning-soft: rgba(122, 81, 0, 0.1);
+  --danger: #c42f36;
+  --scrim: rgba(23, 26, 32, 0.32);
+  --shadow-lg: 0 24px 64px rgba(23, 26, 32, 0.16);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 20px 50px rgba(23, 26, 32, 0.12);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent-text);
+  --focus-color: var(--accent-text);
+}
